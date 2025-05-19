@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ST31_kadai03</string>
+    <string name="image_area">画像表示位置</string>
+    <string name="before_button">戻るボタン</string>
+    <string name="next_button">進むボタン</string>
+
 </resources>
