@@ -3,10 +3,12 @@ package com.classnumber_00_domaekazuki.st31_kadai03
 import android.os.Bundle
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlin.text.get
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,17 +36,36 @@ class MainActivity : AppCompatActivity() {
             R.drawable.img4,
         )
 
-        var currentIndex = 0
+        // ページ数を表示
+        val pageNumber: TextView = findViewById(R.id.page_number)
 
+        var currentIndex = 0
+        fun updateUI() {
+            imageArea.setImageResource(imageList[currentIndex])
+            pageNumber.text = "${currentIndex + 1}/${imageList.size}"
+            beforeButton.visibility = if (currentIndex == 0) ImageButton.INVISIBLE else ImageButton.VISIBLE
+            nextButton.visibility = if (currentIndex == imageList.size - 1) ImageButton.INVISIBLE else ImageButton.VISIBLE
+        }
         // 画像のクリックイベントを付与
         beforeButton.setOnClickListener {
-            currentIndex = if (currentIndex - 1 < 0) imageList.size - 1 else currentIndex - 1
-            imageArea.setImageResource(imageList[currentIndex])
+            if (currentIndex > 0) {
+                currentIndex--
+                updateUI()
+            }
         }
 
         nextButton.setOnClickListener {
-            currentIndex = (currentIndex + 1) % imageList.size
-            imageArea.setImageResource(imageList[currentIndex])
+            if (currentIndex < imageList.size - 1) {
+                currentIndex++
+                updateUI()
+            }
         }
+
+
+
+
+
+        updateUI()
+
     }
 }
