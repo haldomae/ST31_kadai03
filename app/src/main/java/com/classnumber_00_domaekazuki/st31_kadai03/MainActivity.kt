@@ -1,6 +1,8 @@
 package com.classnumber_00_domaekazuki.st31_kadai03
 
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -15,6 +17,10 @@ class MainActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+        val ImageButton: ImageButton = findViewById(R.id.ImageButton)
+        ImageButton.setOnClickListener {
+            // ボタン押した時の処理
         }
     }
 }
